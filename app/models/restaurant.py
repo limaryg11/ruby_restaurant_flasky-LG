@@ -15,3 +15,11 @@ class Restaurant(db.Model):
             "cuisine": self.cuisine,
             "distance_from_ada": self.distance_from_ada
         }
+    @classmethod
+    def from_dict(cls, restaurant_data):
+        return cls(
+            name = restaurant_data["name"],
+            rating = restaurant_data["rating"],
+            cuisine = restaurant_data["cuisine"],
+            distance_from_ada = restaurant_data["distance_from_ada"]
+        )
