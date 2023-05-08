@@ -30,7 +30,7 @@ def create_app(testing=None):
     from .routes.restaurant import restaurant_bp
     app.register_blueprint(restaurant_bp)
 
-    # from .routes.employee import employee_bp
-    # app.register_blueprint(employee_bp)
+    from .routes.employee import employee_bp
+    app.register_blueprint(employee_bp)
 
     return app
