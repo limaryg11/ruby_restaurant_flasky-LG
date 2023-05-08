@@ -80,7 +80,6 @@ def add_employee_to_restauarant(rest_id):
     request_body = request.get_json()
 
     employee = Employee.from_dict(request_body)
-
     employee.restaurant = restaurant
 
     db.session.add(employee)
@@ -88,3 +87,11 @@ def add_employee_to_restauarant(rest_id):
 
     return jsonify({"message": "created employee with id {employee.id} and attached to {restaurant.name}"}), 201
 
+@restaurant_bp.route("/<rest_id/employee", methods=["GET"])
+def get_all_employees_of_restaurant(rest_id):
+
+    restaurant = validate_item(Restaurant, rest_id)
+
+    employees = [employee.to_dict() for employee in restaurant.employees]
+
+    return jsonify(employees), 200
