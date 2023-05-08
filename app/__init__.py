@@ -15,6 +15,7 @@ def create_app(testing=None):
     app = Flask(__name__)
 
     from .models.restaurant import Restaurant
+    from .models.employee import Employee
 
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -28,5 +29,8 @@ def create_app(testing=None):
 
     from .routes.restaurant import restaurant_bp
     app.register_blueprint(restaurant_bp)
+
+    # from .routes.employee import employee_bp
+    # app.register_blueprint(employee_bp)
 
     return app
