@@ -85,9 +85,9 @@ def add_employee_to_restauarant(rest_id):
     db.session.add(employee)
     db.session.commit()
 
-    return jsonify({"message": "created employee with id {employee.id} and attached to {restaurant.name}"}), 201
+    return jsonify({"message": f"created employee with id {employee.id} and attached to {restaurant.name}"}), 201
 
-@restaurant_bp.route("/<rest_id/employee", methods=["GET"])
+@restaurant_bp.route("/<rest_id>/employee", methods=["GET"])
 def get_all_employees_of_restaurant(rest_id):
 
     restaurant = validate_item(Restaurant, rest_id)
